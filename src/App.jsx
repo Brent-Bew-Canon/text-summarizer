@@ -1,4 +1,3 @@
-
 import Summarize from './components/summarize'
 import './App.css'
 
