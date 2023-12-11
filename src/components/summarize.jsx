@@ -64,19 +64,28 @@ function Summarize() {
                         <h1 className="mb-3 pb-5">Welcome To Brent's Magic Summarize Machine</h1>
                         <form onSubmit={sumSubmission}>
                             <div>
-                                <textarea className="fs-5 rounded" name="text" id="text" cols="100" rows="10" onChange={(e) => { setText(e.target.value) }} value={text}></textarea>
+                                <textarea
+                                    className="form-control form-control-lg" // Adjust size using Bootstrap classes
+                                    name="text"
+                                    id="text"
+                                    rows="10"
+                                    value={text}
+                                    onChange={(e) => { setText(e.target.value) }}
+                                    style={{ width: '100%' }} // Set width to 100% for responsiveness
+                                ></textarea>
+
                             </div>
                             <div className="my-4">
-                                <button className="btn btn-success fs-4 mx-2" type="submit">Summarize This</button>
-                                <button className="btn btn-danger fs-4 mx-2" type="button" onClick={clearTextArea}>New Submission</button>
+                                <button className="btn btn-success fs-4 m-4" type="submit">Summarize This</button>
+                                <button className="btn btn-danger fs-4 m-4" type="button" onClick={clearTextArea}>New Submission</button>
                             </div>
                         </form>
                     </div>
-                    <div className="col-10 mx-auto   border-1">
+                    <div className="col-sm-10 mx-auto">
                         <div className="text-center">
                             <h2 className="my-5 fw-bold fs-1 bg-secondary text-white py-3">Summarization</h2>
                         </div>
-                        <div className=" fs-3">
+                        <div className="text-start fs-3">
                             {loadingState()}
                         </div>
                     </div>
