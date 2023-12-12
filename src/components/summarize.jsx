@@ -16,6 +16,7 @@ function Summarize() {
     const clearTextArea = () => {
         setText("");
         setSubmitted(false);
+        setLoading(true);
         setSummary("Awating Your Input Above...");
     }
 
@@ -28,7 +29,7 @@ function Summarize() {
     const loadingState = () => {
         return (submitted ?
             loading ?
-                <div class="spinner-border" role="status">
+                <div class="spinner-border mx-auto" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
                 :
@@ -58,24 +59,27 @@ function Summarize() {
 
     return (
         <>
-            <div className="container">
+            <div class="tool-header container-fluid d-flex align-items-center justify-content-center mb-5" id="tool">
+                <h2 class="text-center bg-header text-white py-4 px-5 rounded">Article Summary Tool</h2>
+            </div>
+            <div className="container" >
                 <div className="row">
-                    <div className="col">
-                        <h1 className="mb-3 pb-5">Welcome To Brent's Magic Summarize Machine</h1>
+                    <div className="col-12">
                         <form onSubmit={sumSubmission}>
                             <div>
                                 <textarea
-                                    className="form-control form-control-lg" // Adjust size using Bootstrap classes
+                                    className="form-control form-control-lg form-bg" // Adjust size using Bootstrap classes
                                     name="text"
                                     id="text"
                                     rows="10"
                                     value={text}
+                                    placeholder="enter your text here...."
                                     onChange={(e) => { setText(e.target.value) }}
                                     style={{ width: '100%' }} // Set width to 100% for responsiveness
                                 ></textarea>
 
                             </div>
-                            <div className="my-4">
+                            <div className="my-4 text-center">
                                 <button className="btn btn-success fs-4 m-4" type="submit">Summarize This</button>
                                 <button className="btn btn-danger fs-4 m-4" type="button" onClick={clearTextArea}>New Submission</button>
                             </div>
@@ -83,7 +87,7 @@ function Summarize() {
                     </div>
                     <div className="col-sm-10 mx-auto">
                         <div className="text-center">
-                            <h2 className="my-5 fw-bold fs-1 bg-secondary text-white py-3">Summarization</h2>
+                            <h2 className="my-5 fw-bold fs-1 bg-secondary text-white py-3">Your Summary</h2>
                         </div>
                         <div className="text-start fs-3">
                             {loadingState()}
